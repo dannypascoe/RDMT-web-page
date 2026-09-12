@@ -12,7 +12,13 @@ function initHeaderScroll() {
       header.classList.toggle("is-solid", isPastHero);
       if (!isPastHero) header.classList.remove("is-hidden");
     },
-    { rootMargin: "-90% 0px 0px 0px" }
+    {
+      // A short light hero never reaches the bottom 10% of the viewport, so there the header
+      // turns solid only once the hero has scrolled out from underneath it.
+      rootMargin: document.body.classList.contains("has-light-hero")
+        ? `0px 0px -${Math.max(0, window.innerHeight - header.offsetHeight)}px 0px`
+        : "-90% 0px 0px 0px",
+    }
   );
   observer.observe(hero);
 
@@ -222,7 +228,7 @@ function initReasonsCarousel() {
 }
 
 function initHeroTypewriter() {
-  const headline = document.getElementById("hero-headline");
+  const headline = document.querySelector("[data-typewriter]");
   if (!headline) return;
 
   const CHAR_MS = 60;
@@ -354,6 +360,17 @@ function initGalleryLightbox() {
   });
 }
 
+function initFilterPills() {
+  document.querySelectorAll("[data-filter-group]").forEach((group) => {
+    const pills = Array.from(group.querySelectorAll(".filter-pill"));
+    pills.forEach((pill) =>
+      pill.addEventListener("click", () => {
+        pills.forEach((p) => p.setAttribute("aria-pressed", String(p === pill)));
+      })
+    );
+  });
+}
+
 function initResultadoEsfuerzoCrossfade() {
   const left = document.getElementById("loop-word-left");
   const right = document.getElementById("loop-word-right");
@@ -372,5 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initDisciplinesScrollSpy();
   initReasonsCarousel();
   initGalleryLightbox();
+  initFilterPills();
   initResultadoEsfuerzoCrossfade();
 });

@@ -433,7 +433,7 @@ button {
 }
 
 /* Hidden until main.js has split the lines into letters, so the full text never flashes first. */
-.js .hero__headline:not(.is-ready) {
+.js [data-typewriter]:not(.is-ready) {
   visibility: hidden;
 }
 
@@ -1440,4 +1440,280 @@ html.has-lightbox {
 
 .site-footer__legal a:hover {
   color: var(--color-text-dim);
+}
+
+/* ==========================================================================
+   Classes page (/classes)
+   ========================================================================== */
+/* The hero on this page is light, so the transparent header needs dark ink until it turns solid. */
+.has-light-hero .site-header:not(.is-solid) .site-header__wordmark {
+  color: var(--color-text-on-light);
+}
+
+.has-light-hero .site-header:not(.is-solid) .nav-toggle__bar {
+  background: var(--color-text-on-light);
+}
+
+.page-inner {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.classes-hero {
+  background: #f5f5f5;
+  color: #0d0d0d;
+  padding: 9rem var(--space-6) 5rem;
+}
+
+@media (min-width: 768px) {
+  .classes-hero {
+    padding: 11rem 8vw 7rem;
+  }
+}
+
+.classes-hero__eyebrow,
+.classes-hero__lede {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: hero-fade-up 625ms var(--ease-smooth-out) forwards;
+}
+
+.classes-hero__eyebrow {
+  color: rgba(13, 13, 13, 0.6);
+  animation-delay: 150ms;
+}
+
+.classes-hero__title {
+  margin-top: var(--space-4);
+  font-family: "Sora", sans-serif;
+  font-weight: 300;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1;
+  color: #0d0d0d;
+}
+
+.classes-hero__lede {
+  margin-top: var(--space-4);
+  max-width: 32rem;
+  font-family: "Inter", sans-serif;
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: rgba(13, 13, 13, 0.7);
+  animation-delay: 300ms;
+}
+
+@media (min-width: 768px) {
+  .classes-hero__lede {
+    font-size: var(--text-body);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classes-hero__eyebrow,
+  .classes-hero__lede {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.classes-calendar {
+  padding: var(--space-16) var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .classes-calendar {
+    padding: var(--space-24) 8vw;
+  }
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.filter-group__label {
+  margin-bottom: var(--space-3);
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.filter-group__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.filter-pill {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  transition: transform var(--duration-fast) var(--ease-smooth-out);
+}
+
+.filter-pill:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.filter-pill:active {
+  transform: scale(0.96);
+}
+
+.filter-pill[aria-pressed="true"] {
+  background: var(--color-surface-light);
+  border-color: var(--color-surface-light);
+  color: var(--color-text-on-light);
+}
+
+.sessions-grid {
+  margin-top: var(--space-12);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .sessions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .sessions-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.session-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  background: var(--color-bg-elevated-1);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+  .session-card {
+    padding: var(--space-8);
+  }
+}
+
+.session-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.session-card__discipline {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+
+.session-card__time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.session-card__start {
+  font-family: "Sora", sans-serif;
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+}
+
+.session-card__end {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+.session-card__title {
+  margin-bottom: var(--space-2);
+  font-family: "Sora", sans-serif;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+}
+
+@media (min-width: 768px) {
+  .session-card__title {
+    font-size: 1.5rem;
+  }
+}
+
+.session-card__coach {
+  margin-bottom: var(--space-3);
+  font-family: "Inter", sans-serif;
+  font-size: var(--text-small);
+  color: var(--color-text-dim);
+}
+
+.session-card__desc {
+  margin-bottom: var(--space-4);
+  font-family: "Inter", sans-serif;
+  font-size: var(--text-small);
+  line-height: 1.625;
+  color: var(--color-text-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.session-card__footer {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.session-card__spots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+.session-card__spots svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.btn--sm {
+  padding: 0.625rem var(--space-6);
+  font-size: 0.75rem;
+}
+
+.classes-photo {
+  display: block;
+  width: 100%;
+  height: 78vh;
+  object-fit: cover;
 }

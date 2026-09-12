@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add("js");</script>
+<title>Calendario de sesiones | RDMT — Human Performance Lab</title>
+<meta name="description" content="Calendario de sesiones de RDMT en Zapopan, Jalisco. Filtra por disciplina, intensidad o día y asegura tu lugar." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Sora:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ["Sora", "sans-serif"],
+          body: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="font-body antialiased has-light-hero">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded">
+    Saltar al contenido principal
+  </a>
+
+  <header id="site-header" class="site-header">
+    <div class="site-header__inner">
+      <a href="/" class="site-header__wordmark">RDMT</a>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-overlay" aria-label="Abrir menú">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="nav-overlay" class="nav-overlay" aria-hidden="true">
+    <button id="nav-close" class="nav-overlay__close" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-overlay__links" aria-label="Navegación principal">
+      <a href="/#disciplinas">Sesiones</a>
+      <a href="/#semana-gratis">Planes</a>
+      <a href="/#coaches">Coaches</a>
+    </nav>
+    <a href="/#semana-gratis" class="btn btn-solid nav-overlay__cta">Reserva una sesión</a>
+    <p class="nav-overlay__hours">Lun–Vie 5:00–22:00 · Sáb–Dom 7:00–14:00</p>
+  </div>
+
+  <main id="main">
+    <!-- HERO (claro) -->
+    <section id="hero" class="classes-hero">
+      <div class="page-inner">
+        <p class="eyebrow classes-hero__eyebrow">El calendario de entrenamiento</p>
+        <h1 class="classes-hero__title" data-typewriter>
+          <span class="hero__line">Calendario de sesiones</span>
+        </h1>
+        <p class="classes-hero__lede">Encuentra tu ritmo. Filtra por disciplina, intensidad o día y asegura tu lugar en segundos.</p>
+      </div>
+    </section>
+
+    <!-- FILTROS + CLASES -->
+    <section id="calendario" class="classes-calendar" aria-label="Sesiones disponibles">
+      <div class="page-inner">
+        <div class="filters">
+          <div class="filter-group">
+            <p class="filter-group__label" id="filtro-disciplina">Disciplina</p>
+            <div class="filter-group__pills" role="group" aria-labelledby="filtro-disciplina" data-filter-group>
+              <button type="button" class="filter-pill" aria-pressed="true">Todas</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Rendimiento</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Funcional</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Hyrox</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Personalizado</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <p class="filter-group__label" id="filtro-intensidad">Intensidad</p>
+            <div class="filter-group__pills" role="group" aria-labelledby="filtro-intensidad" data-filter-group>
+              <button type="button" class="filter-pill" aria-pressed="true">Todas</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Bajo</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Medio</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Alto</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <p class="filter-group__label" id="filtro-dia">Día</p>
+            <div class="filter-group__pills" role="group" aria-labelledby="filtro-dia" data-filter-group>
+              <button type="button" class="filter-pill" aria-pressed="true">Todas</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Lunes</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Martes</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Miércoles</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Jueves</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Viernes</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Sábado</button>
+              <button type="button" class="filter-pill" aria-pressed="false">Domingo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sessions-grid">
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Rendimiento</p>
+              <p class="session-card__time"><span class="session-card__start">06:00</span><span class="session-card__end">07:00</span></p>
+            </div>
+            <h3 class="session-card__title">Rendimiento Explosivo</h3>
+            <p class="session-card__coach">con Diego Salazar</p>
+            <p class="session-card__desc">Sesión de potencia y velocidad: saltos, arrancadas y trabajo explosivo para activar tu mejor versión.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                8 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Funcional</p>
+              <p class="session-card__time"><span class="session-card__start">07:00</span><span class="session-card__end">08:00</span></p>
+            </div>
+            <h3 class="session-card__title">Funcional AMRAP</h3>
+            <p class="session-card__coach">con Sebastián Cruz</p>
+            <p class="session-card__desc">Tantas rondas como puedas en un tiempo límite. Kettlebells, ropes y box jumps sin descanso.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                8 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Hyrox</p>
+              <p class="session-card__time"><span class="session-card__start">18:00</span><span class="session-card__end">19:30</span></p>
+            </div>
+            <h3 class="session-card__title">HYROX Simulation</h3>
+            <p class="session-card__coach">con Sebastián Cruz</p>
+            <p class="session-card__desc">Simulación completa de la prueba HYROX: 8×1000m + 8 estaciones funcionales. Mide tu tiempo.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                8 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Rendimiento</p>
+              <p class="session-card__time"><span class="session-card__start">06:00</span><span class="session-card__end">07:00</span></p>
+            </div>
+            <h3 class="session-card__title">Fuerza &amp; Potencia</h3>
+            <p class="session-card__coach">con Diego Salazar</p>
+            <p class="session-card__desc">Levantamiento progresivo con foco en técnica y control. Construye una base sólida de fuerza.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                7 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Personalizado</p>
+              <p class="session-card__time"><span class="session-card__start">09:00</span><span class="session-card__end">10:00</span></p>
+            </div>
+            <h3 class="session-card__title">Personal 1 a 1</h3>
+            <p class="session-card__coach">con Valeria Núñez</p>
+            <p class="session-card__desc">Sesión individual totalmente a la medida. Tu plan, tu ritmo, tu meta.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                1 lugar disponible
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Funcional</p>
+              <p class="session-card__time"><span class="session-card__start">08:00</span><span class="session-card__end">09:00</span></p>
+            </div>
+            <h3 class="session-card__title">Funcional Weekend</h3>
+            <p class="session-card__coach">con Mariana Torres</p>
+            <p class="session-card__desc">Despierta el fin de semana con movimiento funcional de cuerpo completo. Para todos los niveles.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                9 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Hyrox</p>
+              <p class="session-card__time"><span class="session-card__start">10:00</span><span class="session-card__end">11:30</span></p>
+            </div>
+            <h3 class="session-card__title">HYROX Open</h3>
+            <p class="session-card__coach">con Sebastián Cruz</p>
+            <p class="session-card__desc">Sesión abierta de preparación HYROX con estaciones funcionales y bloques de carrera.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                6 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="session-card">
+            <div class="session-card__top">
+              <p class="session-card__discipline">Rendimiento</p>
+              <p class="session-card__time"><span class="session-card__start">09:00</span><span class="session-card__end">10:00</span></p>
+            </div>
+            <h3 class="session-card__title">Movilidad &amp; Recuperación</h3>
+            <p class="session-card__coach">con Valeria Núñez</p>
+            <p class="session-card__desc">Movilidad activa, liberación miofascial y recuperación para volver más fuerte la próxima semana.</p>
+            <div class="session-card__footer">
+              <p class="session-card__spots">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                10 lugares disponibles
+              </p>
+              <button type="button" class="btn btn-solid btn--sm">
+                Reservar
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <img class="classes-photo" src="/brand_assets/photos/espacio_3.png" alt="Recepción y escalera del espacio RDMT" loading="lazy" />
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer section-pad">
+    <div class="site-footer__media" style="background-image:url('/brand_assets/photos/espacio_1.png')" role="img" aria-label=""></div>
+    <div class="site-footer__scrim"></div>
+    <div class="site-footer__content">
+      <p class="site-footer__wordmark" aria-label="RDMT">
+        <span aria-hidden="true">R</span><span aria-hidden="true">D</span><span aria-hidden="true">M</span><span aria-hidden="true">T</span>
+      </p>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <p>
+            Un laboratorio de rendimiento humano. Rendimiento deportivo, funcional, HYROX y entrenamiento personalizado
+            para hombres y mujeres. Sé tu mejor versión.
+          </p>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="eyebrow">Navegación</p>
+          <a href="/#disciplinas">Sesiones</a>
+          <a href="/#semana-gratis">Planes</a>
+          <a href="/#coaches">Coaches</a>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="eyebrow">Contacto</p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M12 21s-7-6.5-7-11a7 7 0 1 1 14 0c0 4.5-7 11-7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            Zapopan, Jalisco, México
+          </p>
+          <a href="tel:+523300000000">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+            </svg>
+            +52 33 0000 0000
+          </a>
+          <a href="mailto:hola@rdmt.mx">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+            hola@rdmt.mx
+          </a>
+          <a href="https://instagram.com/rendiment.mx" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            @rendiment.mx
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 RDMT — Human Performance Lab.</p>
+        <div class="site-footer__legal">
+          <a href="#">Aviso de privacidad</a>
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Accesibilidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
