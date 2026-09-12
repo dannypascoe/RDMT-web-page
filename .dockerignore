@@ -1,0 +1,12 @@
+node_modules
+scripts
+temporary-screenshots
+inspiration
+business_info
+.claude
+.vscode
+.git
+README.md
+CLAUDE.md
+package.json
+package-lock.json

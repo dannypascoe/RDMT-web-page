@@ -1,0 +1,12 @@
+{
+  "name": "web-project-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "screenshot": "node scripts/screenshot.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

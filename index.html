@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add("js");</script>
+<title>RDMT — Human Performance Lab | Zapopan, Jalisco</title>
+<meta name="description" content="RDMT es un laboratorio de regreso al rendimiento en Zapopan, Jalisco. Rendimiento, funcional, HYROX y entrenamiento personalizado." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Sora:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ["Sora", "sans-serif"],
+          body: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="font-body antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded">
+    Saltar al contenido principal
+  </a>
+
+  <header id="site-header" class="site-header">
+    <div class="site-header__inner">
+      <a href="#hero" class="site-header__wordmark">RDMT</a>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-overlay" aria-label="Abrir menú">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="nav-overlay" class="nav-overlay" aria-hidden="true">
+    <button id="nav-close" class="nav-overlay__close" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-overlay__links" aria-label="Navegación principal">
+      <a href="#disciplinas">Sesiones</a>
+      <a href="#semana-gratis">Planes</a>
+      <a href="#coaches">Coaches</a>
+    </nav>
+    <a href="#semana-gratis" class="btn btn-solid nav-overlay__cta">Reserva una sesión</a>
+    <p class="nav-overlay__hours">Lun–Vie 5:00–22:00 · Sáb–Dom 7:00–14:00</p>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero__media" style="background-image:url('brand_assets/photos/hero.png')" role="img" aria-label="Atleta empujando un trineo de peso en el gimnasio RDMT"></div>
+      <div class="hero__scrim"></div>
+      <div class="hero__content">
+        <p class="eyebrow hero__eyebrow">RDMT — Human Performance Lab</p>
+        <h1 class="hero__headline" id="hero-headline">
+          <span class="hero__line">Fuerza.</span>
+          <span class="hero__line">Conditioning.</span>
+          <span class="hero__line">Regreso al rendimiento.</span>
+        </h1>
+        <div class="hero__footer">
+          <p class="hero__body">
+            Un laboratorio de regreso al rendimiento. Evaluamos, entrenamos y medimos tu progreso para que vuelvas más
+            fuerte, más rápido y sin miedo a lesionarte.
+          </p>
+          <a href="#semana-gratis" class="btn btn-solid">
+            Reserva tu lugar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMANA GRATIS -->
+    <section id="semana-gratis" class="free-week section-pad">
+      <svg class="free-week__icon" viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="2 20 14 10 22 15 38 3" />
+        <circle cx="38" cy="3" r="2" fill="currentColor" stroke="none" />
+      </svg>
+      <h2 class="section-heading">Tu primera semana gratis</h2>
+      <p class="section-subtext">
+        Vive cada disciplina, conoce a cada coach y siente la energía de RDMT antes de comprometerte. Sin ataduras, sin
+        presión, solo rendimiento y descubrimiento.
+      </p>
+      <a href="#" class="btn btn-solid">
+        Reclama tu semana
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7" />
+          <polyline points="7 7 17 7 17 17" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- DISCIPLINAS -->
+    <section id="disciplinas" class="section-pad">
+      <div class="disciplines__layout">
+        <div class="disciplines__intro">
+          <p class="eyebrow">Las disciplinas</p>
+          <h2 class="section-heading">Encuentra el entrenamiento ideal para ti</h2>
+
+          <div class="compass" aria-hidden="true">
+            <div class="compass-ring" id="compass-ring">
+              <div class="compass-node" data-discipline="rendimiento" data-slot="0">
+                <span class="compass-node__dot"></span>
+                <span class="compass-node__label">Rendimiento</span>
+              </div>
+              <div class="compass-node" data-discipline="funcional" data-slot="1">
+                <span class="compass-node__dot"></span>
+                <span class="compass-node__label">Funcional</span>
+              </div>
+              <div class="compass-node" data-discipline="hyrox" data-slot="2">
+                <span class="compass-node__dot"></span>
+                <span class="compass-node__label">HYROX</span>
+              </div>
+              <div class="compass-node" data-discipline="personalizado" data-slot="3">
+                <span class="compass-node__dot"></span>
+                <span class="compass-node__label">Personalizado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="disciplines__cards">
+          <article class="discipline-card" data-discipline="rendimiento">
+            <div class="discipline-card__image" style="background-image:url('brand_assets/photos/disciplina_rendimiento.png')"></div>
+            <div class="discipline-card__scrim"></div>
+            <div class="discipline-card__content">
+              <h3>Rendimiento</h3>
+              <p>Explosividad, velocidad y potencia.</p>
+              <div class="discipline-card__actions">
+                <a href="#" class="btn btn-outline">Conoce más</a>
+                <a href="#" class="btn btn-solid">
+                  Reservar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-discipline="funcional">
+            <div class="discipline-card__image" style="background-image:url('brand_assets/photos/disciplina_funcional.png')"></div>
+            <div class="discipline-card__scrim"></div>
+            <div class="discipline-card__content">
+              <h3>Funcional</h3>
+              <p>Movimiento real, sin atajos.</p>
+              <div class="discipline-card__actions">
+                <a href="#" class="btn btn-outline">Conoce más</a>
+                <a href="#" class="btn btn-solid">
+                  Reservar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-discipline="hyrox">
+            <div class="discipline-card__image" style="background-image:url('brand_assets/photos/disciplina_hyrox.png')"></div>
+            <div class="discipline-card__scrim"></div>
+            <div class="discipline-card__content">
+              <h3>HYROX</h3>
+              <p>Corre, empuja, supera.</p>
+              <div class="discipline-card__actions">
+                <a href="#" class="btn btn-outline">Conoce más</a>
+                <a href="#" class="btn btn-solid">
+                  Reservar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="discipline-card" data-discipline="personalizado">
+            <div class="discipline-card__image" style="background-image:url('brand_assets/photos/disciplina_personalizado.png')"></div>
+            <div class="discipline-card__scrim"></div>
+            <div class="discipline-card__content">
+              <h3>Personalizado</h3>
+              <p>Tu plan, tu ritmo, tu meta.</p>
+              <div class="discipline-card__actions">
+                <a href="#" class="btn btn-outline">Conoce más</a>
+                <a href="#" class="btn btn-solid">
+                  Reservar
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <div class="disciplines__more">
+            <a href="#" class="btn btn-solid">
+              Todas las sesiones
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="loop-flourish">
+      <img class="loop-flourish__media" src="brand_assets/photos/espacio_5.png" alt="" loading="lazy" />
+      <div class="loop-flourish__inner">
+        <p class="loop-flourish__word loop-flourish__word--left" id="loop-word-left">Esfuerzo</p>
+        <svg class="loop-flourish__icon" viewBox="0 0 100 50" fill="none" aria-hidden="true">
+          <path
+            id="infinity-path"
+            d="M25,25 C25,10 45,10 50,25 C55,40 75,40 75,25 C75,10 55,10 50,25 C45,40 25,40 25,25 Z"
+            stroke="currentColor"
+            stroke-width="1.4"
+          />
+          <circle r="2.5" fill="currentColor">
+            <animateMotion dur="4s" repeatCount="indefinite">
+              <mpath href="#infinity-path"></mpath>
+            </animateMotion>
+          </circle>
+        </svg>
+        <p class="loop-flourish__word loop-flourish__word--right is-shown" id="loop-word-right">Resultado</p>
+      </div>
+      <p class="loop-flourish__caption">Supera. Avanza. Repite.</p>
+    </div>
+
+    <!-- DISTINTOS POR DISEÑO -->
+    <section id="por-que-rdmt" class="section-pad">
+      <p class="eyebrow">Por qué RDMT</p>
+      <h2 class="section-heading">Distintos por diseño</h2>
+
+      <div class="reasons-carousel" role="region" aria-roledescription="carousel" aria-label="Por qué RDMT">
+        <div class="carousel-viewport" id="carousel-viewport">
+          <ul class="carousel-track" id="carousel-track">
+            <li class="reason-card" data-index="0">
+              <span class="reason-card__number">01</span>
+              <h3>Enfoque en rendimiento</h3>
+              <p>Entrenamiento basado en datos y método de laboratorio para medir y superar tus marcas.</p>
+            </li>
+            <li class="reason-card" data-index="1">
+              <span class="reason-card__number">02</span>
+              <h3>Coaches certificados</h3>
+              <p>Cada coach aporta certificaciones internacionales y años de experiencia real en alto rendimiento.</p>
+            </li>
+            <li class="reason-card" data-index="2">
+              <span class="reason-card__number">03</span>
+              <h3>Grupos reducidos</h3>
+              <p>Cupos limitados para atención personalizada y conexión real con tu coach en cada sesión.</p>
+            </li>
+            <li class="reason-card" data-index="3">
+              <span class="reason-card__number">04</span>
+              <h3>Método de laboratorio</h3>
+              <p>Evaluamos fuerza, potencia y movilidad. Tu progreso se mide, no se adivina.</p>
+            </li>
+            <li class="reason-card" data-index="4">
+              <span class="reason-card__number">05</span>
+              <h3>Horarios flexibles</h3>
+              <p>De madrugada a noche, 7 días a la semana. Tu entrenamiento se adapta a tu vida.</p>
+            </li>
+            <li class="reason-card" data-index="5">
+              <span class="reason-card__number">06</span>
+              <h3>Comunidad de alto rendimiento</h3>
+              <p>Únete a un grupo de hombres y mujeres que se empujan a ser su mejor versión.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" id="carousel-prev" aria-label="Razón anterior">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+          </button>
+          <div class="carousel-dots" id="carousel-dots">
+            <button class="carousel-dot" data-index="0" aria-label="Ir a razón 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Ir a razón 2"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Ir a razón 3"></button>
+            <button class="carousel-dot" data-index="3" aria-label="Ir a razón 4"></button>
+            <button class="carousel-dot" data-index="4" aria-label="Ir a razón 5"></button>
+            <button class="carousel-dot" data-index="5" aria-label="Ir a razón 6"></button>
+          </div>
+          <button class="carousel-arrow" id="carousel-next" aria-label="Razón siguiente">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COACHES -->
+    <section id="coaches" class="section-pad">
+      <div class="coaches__list">
+        <p class="eyebrow">Tus guías</p>
+        <h2 class="section-heading">Conoce a los coaches</h2>
+
+        <article class="coach-row">
+          <img class="coach-row__photo" src="brand_assets/photos/coach_diego.png" alt="Retrato del coach Diego Salazar" width="1024" height="1024" loading="lazy" />
+          <div class="coach-row__info">
+            <h3>Diego Salazar</h3>
+            <p class="coach-row__role">Rendimiento &amp; Fuerza</p>
+            <p class="coach-row__quote">“La potencia se construye, no se nace con ella.”</p>
+          </div>
+        </article>
+
+        <article class="coach-row">
+          <img class="coach-row__photo" src="brand_assets/photos/coach_mariana.png" alt="Retrato de la coach Mariana Torres" width="1024" height="1024" loading="lazy" />
+          <div class="coach-row__info">
+            <h3>Mariana Torres</h3>
+            <p class="coach-row__role">Rendimiento deportivo</p>
+            <p class="coach-row__quote">“Mide, mejora, repite. La mejora es ciencia.”</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" class="testimonials section-pad">
+      <div class="testimonials__media" style="background-image:url('brand_assets/photos/disciplina_hyrox.png')" role="img" aria-label="Atleta entrenando en RDMT"></div>
+      <div class="testimonials__scrim"></div>
+      <div class="testimonials__content">
+        <p class="eyebrow">Prueba del rendimiento</p>
+        <h2 class="section-heading">Sus palabras, sus resultados</h2>
+
+        <div class="testimonials__grid">
+          <figure class="testimonial-card">
+            <blockquote class="testimonial-card__quote">“RDMT no solo cambió mi cuerpo, cambió mi mentalidad. Ahora entreno con propósito y mido cada avance.”</blockquote>
+            <figcaption class="testimonial-card__footer">
+              <p class="testimonial-card__name">Andrés G.</p>
+              <p class="testimonial-card__result">Bajó 14 kg en 4 meses</p>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card">
+            <blockquote class="testimonial-card__quote">“Los coaches ven en ti lo que tú aún no ves. Esa es la magia de este lugar. Llegué sin creerlo y completé mi primer HYROX.”</blockquote>
+            <figcaption class="testimonial-card__footer">
+              <p class="testimonial-card__name">Paula R.</p>
+              <p class="testimonial-card__result">Completó su primer HYROX</p>
+            </figcaption>
+          </figure>
+          <figure class="testimonial-card">
+            <blockquote class="testimonial-card__quote">“Después de una lesión, el equipo me devolvió la fuerza y la confianza. Soy más fuerte hoy que nunca.”</blockquote>
+            <figcaption class="testimonial-card__footer">
+              <p class="testimonial-card__name">Carlos M.</p>
+              <p class="testimonial-card__result">Superó una lesión crónica</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL ESPACIO -->
+    <section id="espacio" class="section-pad">
+      <p class="eyebrow">El espacio</p>
+      <h2 class="section-heading">Donde vive el rendimiento</h2>
+
+      <div class="gallery__grid">
+        <div class="gallery__item gallery__item--1">
+          <img src="brand_assets/photos/espacio_1.png" alt="Tragaluz industrial sobre el área de entrenamiento" loading="lazy" />
+        </div>
+        <div class="gallery__item gallery__item--2">
+          <img src="brand_assets/photos/espacio_2.png" alt="Área de peso libre y racks de RDMT" loading="lazy" />
+        </div>
+        <div class="gallery__item gallery__item--3">
+          <img src="brand_assets/photos/espacio_3.png" alt="Recepción y área común de RDMT" loading="lazy" />
+        </div>
+        <div class="gallery__item gallery__item--4">
+          <img src="brand_assets/photos/espacio_4.png" alt="Atleta entrenando fuerza en RDMT" loading="lazy" />
+        </div>
+        <div class="gallery__item gallery__item--5">
+          <img src="brand_assets/photos/espacio_5.png" alt="Sesión de conditioning en RDMT" loading="lazy" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer section-pad">
+    <div class="site-footer__media" style="background-image:url('brand_assets/photos/espacio_1.png')" role="img" aria-label=""></div>
+    <div class="site-footer__scrim"></div>
+    <div class="site-footer__content">
+      <p class="site-footer__wordmark" aria-label="RDMT">
+        <span aria-hidden="true">R</span><span aria-hidden="true">D</span><span aria-hidden="true">M</span><span aria-hidden="true">T</span>
+      </p>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__about">
+          <p>
+            Un laboratorio de rendimiento humano. Rendimiento deportivo, funcional, HYROX y entrenamiento personalizado
+            para hombres y mujeres. Sé tu mejor versión.
+          </p>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="eyebrow">Navegación</p>
+          <a href="#disciplinas">Sesiones</a>
+          <a href="#semana-gratis">Planes</a>
+          <a href="#coaches">Coaches</a>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="eyebrow">Contacto</p>
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M12 21s-7-6.5-7-11a7 7 0 1 1 14 0c0 4.5-7 11-7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            Zapopan, Jalisco, México
+          </p>
+          <a href="tel:+523300000000">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+            </svg>
+            +52 33 0000 0000
+          </a>
+          <a href="mailto:hola@rdmt.mx">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+            hola@rdmt.mx
+          </a>
+          <a href="https://instagram.com/rendiment.mx" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            @rendiment.mx
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 RDMT — Human Performance Lab.</p>
+        <div class="site-footer__legal">
+          <a href="#">Aviso de privacidad</a>
+          <a href="#">Términos y condiciones</a>
+          <a href="#">Accesibilidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
