@@ -380,21 +380,21 @@
       <h2 class="section-heading">Donde vive el rendimiento</h2>
 
       <div class="gallery__grid">
-        <div class="gallery__item gallery__item--1">
+        <button type="button" class="gallery__item gallery__item--1" aria-label="Ampliar imagen: tragaluz industrial sobre el área de entrenamiento">
           <img src="brand_assets/photos/espacio_1.png" alt="Tragaluz industrial sobre el área de entrenamiento" loading="lazy" />
-        </div>
-        <div class="gallery__item gallery__item--2">
+        </button>
+        <button type="button" class="gallery__item gallery__item--2" aria-label="Ampliar imagen: área de peso libre y racks de RDMT">
           <img src="brand_assets/photos/espacio_2.png" alt="Área de peso libre y racks de RDMT" loading="lazy" />
-        </div>
-        <div class="gallery__item gallery__item--3">
+        </button>
+        <button type="button" class="gallery__item gallery__item--3" aria-label="Ampliar imagen: recepción y área común de RDMT">
           <img src="brand_assets/photos/espacio_3.png" alt="Recepción y área común de RDMT" loading="lazy" />
-        </div>
-        <div class="gallery__item gallery__item--4">
+        </button>
+        <button type="button" class="gallery__item gallery__item--4" aria-label="Ampliar imagen: atleta entrenando fuerza en RDMT">
           <img src="brand_assets/photos/espacio_4.png" alt="Atleta entrenando fuerza en RDMT" loading="lazy" />
-        </div>
-        <div class="gallery__item gallery__item--5">
+        </button>
+        <button type="button" class="gallery__item gallery__item--5" aria-label="Ampliar imagen: sesión de conditioning en RDMT">
           <img src="brand_assets/photos/espacio_5.png" alt="Sesión de conditioning en RDMT" loading="lazy" />
-        </div>
+        </button>
       </div>
     </section>
   </main>
@@ -466,6 +466,17 @@
       </div>
     </div>
   </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+    <div class="lightbox__backdrop"></div>
+    <img class="lightbox__img" id="lightbox-img" alt="" />
+    <button type="button" class="lightbox__close" aria-label="Cerrar imagen">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+      </svg>
+    </button>
+  </dialog>
 
   <script src="js/main.js"></script>
 </body>

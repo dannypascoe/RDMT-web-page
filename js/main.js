@@ -16,21 +16,53 @@ function initHeaderScroll() {
   );
   observer.observe(hero);
 
+  const REVEAL_ZONE_PX = 80;
   let lastY = window.scrollY;
+  let pointerAtTop = false;
+  let shownByPointer = false;
+
+  const show = () => header.classList.remove("is-hidden");
+  const hide = () => {
+    if (!isPastHero || pointerAtTop || header.contains(document.activeElement)) return;
+    header.classList.add("is-hidden");
+  };
+
   window.addEventListener(
     "scroll",
     () => {
       const y = window.scrollY;
       if (isPastHero) {
-        const scrollingDown = y > lastY + 4;
-        const scrollingUp = y < lastY - 4;
-        if (scrollingDown) header.classList.add("is-hidden");
-        else if (scrollingUp) header.classList.remove("is-hidden");
+        if (y > lastY + 4) hide();
+        else if (y < lastY - 4) {
+          shownByPointer = false;
+          show();
+        }
       }
       lastY = y;
     },
     { passive: true }
   );
+
+  // Reveal while the mouse sits in the strip where the header lives, whether or not the page is scrolling.
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      if (e.pointerType !== "mouse") return;
+      const atTop = e.clientY <= REVEAL_ZONE_PX;
+      if (atTop === pointerAtTop) return;
+      pointerAtTop = atTop;
+      if (atTop) {
+        shownByPointer = header.classList.contains("is-hidden");
+        show();
+      } else if (shownByPointer) {
+        shownByPointer = false;
+        hide();
+      }
+    },
+    { passive: true }
+  );
+
+  header.addEventListener("focusin", show);
 }
 
 function initNavOverlay() {
@@ -240,6 +272,88 @@ function initHeroTypewriter() {
   window.setTimeout(typeNext, START_MS);
 }
 
+function initGalleryLightbox() {
+  const dialog = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const backdrop = dialog?.querySelector(".lightbox__backdrop");
+  const closeBtn = dialog?.querySelector(".lightbox__close");
+  const triggers = document.querySelectorAll(".gallery__item");
+  if (!dialog || !img || !backdrop || !closeBtn || !triggers.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const OPEN_MS = 450;
+  const CLOSE_MS = 320;
+  const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+  let trigger = null;
+  let busy = false;
+
+  // Transform that puts the enlarged image back over the thumbnail it came from.
+  const thumbTransform = () => {
+    const t = trigger.getBoundingClientRect();
+    const f = img.getBoundingClientRect();
+    const dx = t.left + t.width / 2 - (f.left + f.width / 2);
+    const dy = t.top + t.height / 2 - (f.top + f.height / 2);
+    return `translate(${dx}px, ${dy}px) scale(${t.width / f.width})`;
+  };
+
+  const open = async (button) => {
+    if (busy) return;
+    busy = true;
+    trigger = button;
+    const thumb = button.querySelector("img");
+    img.src = thumb.currentSrc || thumb.src;
+    img.alt = thumb.alt;
+    img.style.opacity = "0";
+    document.documentElement.classList.add("has-lightbox");
+    dialog.showModal();
+    await img.decode().catch(() => {});
+    if (reduceMotion) {
+      img.style.opacity = "";
+    } else {
+      backdrop.animate([{ opacity: 0 }, { opacity: 1 }], { duration: OPEN_MS, easing: EASE });
+      closeBtn.animate([{ opacity: 0 }, { opacity: 1 }], { duration: OPEN_MS, easing: EASE });
+      const zoom = img.animate(
+        [
+          { transform: thumbTransform(), opacity: 0.6 },
+          { transform: "none", opacity: 1 },
+        ],
+        { duration: OPEN_MS, easing: EASE }
+      );
+      img.style.opacity = "";
+      await zoom.finished;
+    }
+    busy = false;
+  };
+
+  const close = async () => {
+    if (busy || !dialog.open) return;
+    busy = true;
+    if (!reduceMotion) {
+      backdrop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: CLOSE_MS, easing: EASE, fill: "forwards" });
+      closeBtn.animate([{ opacity: 1 }, { opacity: 0 }], { duration: CLOSE_MS * 0.6, easing: EASE, fill: "forwards" });
+      await img.animate(
+        [
+          { transform: "none", opacity: 1 },
+          { transform: thumbTransform(), opacity: 0 },
+        ],
+        { duration: CLOSE_MS, easing: EASE, fill: "forwards" }
+      ).finished;
+    }
+    dialog.close();
+    [...img.getAnimations(), ...backdrop.getAnimations(), ...closeBtn.getAnimations()].forEach((a) => a.cancel());
+    document.documentElement.classList.remove("has-lightbox");
+    trigger?.focus({ preventScroll: true });
+    busy = false;
+  };
+
+  triggers.forEach((button) => button.addEventListener("click", () => open(button)));
+  dialog.addEventListener("click", close);
+  dialog.addEventListener("cancel", (e) => {
+    e.preventDefault();
+    close();
+  });
+}
+
 function initResultadoEsfuerzoCrossfade() {
   const left = document.getElementById("loop-word-left");
   const right = document.getElementById("loop-word-right");
@@ -257,5 +371,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavOverlay();
   initDisciplinesScrollSpy();
   initReasonsCarousel();
+  initGalleryLightbox();
   initResultadoEsfuerzoCrossfade();
 });
